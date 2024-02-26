@@ -1,7 +1,7 @@
 .square {
   background: #fff;
-  color: #000;
-  border: 1px solid #999;
+  color: #213547;
+  border: 1px solid #1a1a1a;
   float: left;
   border-radius: 0;
   font-size: 3rem;
@@ -13,4 +13,14 @@
   margin-top: -1px;
   padding: 0;
   text-align: center;
+}
+
+.square:hover {
+  background: #f9f9f9;
+  border-color: #1a1a1a;
+}
+
+.square:focus,
+.square:focus-visible {
+  outline: none;
 }

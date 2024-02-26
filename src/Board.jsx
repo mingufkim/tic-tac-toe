@@ -1,15 +1,24 @@
 import { useState } from "react"
 import "./Board.css"
 import Square from "./Square"
+import calculateWinner from "./calculateWinner"
 
 export default function Board() {
   const [xIsNext, setXIsNext] = useState(true)
   const [squares, setSquares] = useState(Array(9).fill(null))
+  const winner = calculateWinner(squares)
+  let status
+
+  if (winner) {
+    status = `Winner: ${winner}`
+  } else {
+    status = `Next player: ${xIsNext ? "X" : "O"}`
+  }
 
   function handleClick(i) {
     const nextSquares = squares.slice()
-    // If the square is already filled, return early
-    if (squares[i]) {
+
+    if (squares[i] || calculateWinner(squares)) {
       return
     }
 
@@ -20,11 +29,13 @@ export default function Board() {
     }
 
     setSquares(nextSquares)
-    setXIsNext(!xIsNext) // Flip the value of xIsNext
+    setXIsNext(!xIsNext)
   }
 
   return (
-    <>
+    <div className="board">
+      <div className="status">{status}</div>
+
       <div>
         <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
         <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -40,6 +51,6 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-    </>
+    </div>
   )
 }
