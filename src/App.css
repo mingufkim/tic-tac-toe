@@ -1,12 +1,12 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   text-align: center;
 }
 
 .logo {
-  height: 6em;
+  height: 3em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
@@ -31,4 +31,17 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+.ttt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.history ul {
+  list-style: none;
 }
