@@ -3,12 +3,24 @@ import "./Board.css"
 import Square from "./Square"
 
 export default function Board() {
+  const [xIsNext, setXIsNext] = useState(true)
   const [squares, setSquares] = useState(Array(9).fill(null))
 
   function handleClick(i) {
     const nextSquares = squares.slice()
-    nextSquares[i] = "X"
+    // If the square is already filled, return early
+    if (squares[i]) {
+      return
+    }
+
+    if (xIsNext) {
+      nextSquares[i] = "X"
+    } else {
+      nextSquares[i] = "O"
+    }
+
     setSquares(nextSquares)
+    setXIsNext(!xIsNext) // Flip the value of xIsNext
   }
 
   return (
