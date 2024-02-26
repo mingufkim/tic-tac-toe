@@ -1,7 +1,7 @@
 import reactLogo from "./assets/react.svg"
 import viteLogo from "/vite.svg"
 import "./App.css"
-import Square from "./Square"
+import Board from "./Board"
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       </div>
       <h1>Tic-Tac-Toe</h1>
       <div>
-        <Square />
+        <Board />
       </div>
     </>
   )
