@@ -7,6 +7,7 @@ import { useState } from "react"
 function App() {
   const [history, setHistory] = useState([Array(9).fill(null)])
   const [currentMove, setCurrentMove] = useState(0)
+  const [ascending, setAscending] = useState(true)
   const xIsNext = currentMove % 2 === 0
   const currentSquares = history[currentMove]
 
@@ -18,6 +19,10 @@ function App() {
 
   function jumpTo(nextMove) {
     setCurrentMove(nextMove)
+  }
+
+  function toggleSort() {
+    setAscending(!ascending)
   }
 
   const moves = history.map((squares, move) => {
@@ -36,13 +41,17 @@ function App() {
     return (
       <li key={move}>
         {move === currentMove ? (
-          <div>{description}</div>
+          <div className="currentDescr">{description}</div>
         ) : (
           <button onClick={() => jumpTo(move)}>{description}</button>
         )}
       </li>
     )
   })
+
+  if (!ascending) {
+    moves.reverse()
+  }
 
   return (
     <>
@@ -57,6 +66,9 @@ function App() {
           />
         </div>
         <div className="history">
+          <button className="toggle" onClick={toggleSort}>
+            {ascending ? "Ascending" : "Descending"}
+          </button>
           <ul>{moves}</ul>
         </div>
       </div>

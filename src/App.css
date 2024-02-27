@@ -42,6 +42,32 @@
   margin: 1rem;
 }
 
+.toggle {
+  background-color: inherit;
+  color: #646cffaa;
+  border: 1px solid #61dafbaa;
+  padding: 0.5rem;
+  margin-left: 2rem;
+}
+
+.currentDescr {
+  margin: 1rem 0;
+  font-size: 1rem;
+  animation: blink 3s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
 .history ul {
   list-style: none;
 }
