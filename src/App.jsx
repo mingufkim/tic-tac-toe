@@ -29,9 +29,17 @@ function App() {
       description = "Go to game start"
     }
 
+    if (move === currentMove && move > 0) {
+      description = `You are at move #${move}`
+    }
+
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        {move === currentMove ? (
+          <div>{description}</div>
+        ) : (
+          <button onClick={() => jumpTo(move)}>{description}</button>
+        )}
       </li>
     )
   })
