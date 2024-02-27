@@ -14,6 +14,26 @@ function App() {
     setXIsNext(!xIsNext)
   }
 
+  function jumpTo(nextMove) {
+    // TODO
+  }
+
+  const moves = history.map((squares, move) => {
+    let description
+
+    if (move > 0) {
+      description = `Go to move #${move}`
+    } else {
+      description = "Go to game start"
+    }
+
+    return (
+      <li key={move}>
+        <button onClick={() => jumpTo(move)}>{description}</button>
+      </li>
+    )
+  })
+
   return (
     <>
       <h1>Tic-Tac-Toe</h1>
@@ -27,7 +47,7 @@ function App() {
           />
         </div>
         <div className="history">
-          <ul>{/* TODO */}</ul>
+          <ul>{moves}</ul>
         </div>
       </div>
 

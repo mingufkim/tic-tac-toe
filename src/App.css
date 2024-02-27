@@ -45,3 +45,7 @@
 .history ul {
   list-style: none;
 }
+
+.history li {
+  margin: 1rem 0;
+}
