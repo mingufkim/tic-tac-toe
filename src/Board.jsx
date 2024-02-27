@@ -3,13 +3,19 @@ import Square from "./Square"
 import calculateWinner from "./calculateWinner"
 
 export default function Board({ xIsNext, squares, onPlay }) {
-  const winner = calculateWinner(squares)
+  const result = calculateWinner(squares)
+  const winner = result ? result.winner : null
+  const winnerLine = result ? result.line : []
   let status
 
   if (winner) {
     status = `Winner: ${winner}`
   } else {
     status = `Next player: ${xIsNext ? "X" : "O"}`
+  }
+
+  if (!winner && squares.every(Boolean)) {
+    status = "Draw"
   }
 
   function handleClick(i) {
@@ -38,6 +44,7 @@ export default function Board({ xIsNext, squares, onPlay }) {
             key={i * 3 + j}
             value={squares[i * 3 + j]}
             onSquareClick={() => handleClick(i * 3 + j)}
+            highlight={winnerLine.includes(i * 3 + j)}
           />
         )
       }

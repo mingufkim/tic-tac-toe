@@ -24,3 +24,23 @@
 .square:focus-visible {
   outline: none;
 }
+
+.square.highlight {
+  background: #61dafbaa;
+  color: #646cffaa;
+  border: none;
+  animation: heartbeat 1s ease infinite;
+  animation-iteration-count: 3;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
